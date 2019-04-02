@@ -24,11 +24,12 @@ extern "C" {
 rmw_event_t
 rmw_get_zero_initialized_event(void)
 {
-  return (const rmw_event_t) {
-           .implementation_identifier = NULL,
-           .data = NULL,
-           .event_type = RMW_EVENT_INVALID
+  const rmw_event_t event = {
+    .implementation_identifier = NULL,
+    .data = NULL,
+    .event_type = RMW_EVENT_INVALID
   };  // NOLINT(readability/braces): false positive
+  return event;
 }
 
 /**
