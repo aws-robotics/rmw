@@ -65,24 +65,26 @@ rmw_ret_t
 rmw_publisher_event_init(
   rmw_event_t * rmw_event,
   const rmw_publisher_t * publisher,
-  const rmw_event_type_t event_type)
+  rmw_event_type_t event_type)
 {
-  return __rmw_init_event(rmw_event,
-           publisher->implementation_identifier,
-           publisher->data,
-           event_type);
+  return __rmw_init_event(
+    rmw_event,
+    publisher->implementation_identifier,
+    publisher->data,
+    event_type);
 }
 
 rmw_ret_t
 rmw_subscription_event_init(
   rmw_event_t * rmw_event,
   const rmw_subscription_t * subscription,
-  const rmw_event_type_t event_type)
+  rmw_event_type_t event_type)
 {
-  return __rmw_init_event(rmw_event,
-           subscription->implementation_identifier,
-           subscription->data,
-           event_type);
+  return __rmw_init_event(
+    rmw_event,
+    subscription->implementation_identifier,
+    subscription->data,
+    event_type);
 }
 
 rmw_ret_t

@@ -63,10 +63,9 @@ RMW_WARN_UNUSED
 rmw_event_t
 rmw_get_zero_initialized_event(void);
 
+/// Initialize a rmw publisher event.
 /**
- * Initialize a rmw publisher event.
- *
- * \param rmw_event [in|out] to initialize
+ * \param[in|out] rmw_event to initialize
  * \param publisher to initialize with
  * \param event_type for the event to handle
  * \return `RMW_RET_OK` if successful, or
@@ -78,12 +77,11 @@ rmw_ret_t
 rmw_publisher_event_init(
   rmw_event_t * rmw_event,
   const rmw_publisher_t * publisher,
-  const rmw_event_type_t event_type);
+  rmw_event_type_t event_type);
 
+/// Initialize a rmw subscription event.
 /**
- * Initialize a rmw subscription event.
- *
- * \param rmw_event [in|out] to initialize
+ * \param[in|out] rmw_event to initialize
  * \param subscription to initialize with
  * \param event_type for the event to handle
  * \return `RMW_RET_OK` if successful, or
@@ -95,11 +93,10 @@ rmw_ret_t
 rmw_subscription_event_init(
   rmw_event_t * rmw_event,
   const rmw_subscription_t * subscription,
-  const rmw_event_type_t event_type);
+  rmw_event_type_t event_type);
 
-/*
- * Take an event from the event handle.
- *
+/// Take an event from the event handle.
+/**
  * \param event_handle event object to take from
  * \param event_info event info object to write taken data into
  * \param taken boolean flag indicating if an event was taken or not
@@ -115,10 +112,9 @@ rmw_take_event(
   void * event_info,
   bool * taken);
 
+/// Finalize an rmw_event_t.
 /**
- * Finalize an rmw_event_t.
- *
- * \param event to delete
+ * \param event to finalize
  */
 RMW_PUBLIC
 RMW_WARN_UNUSED
