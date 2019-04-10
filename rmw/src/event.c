@@ -32,16 +32,6 @@ rmw_get_zero_initialized_event(void)
   return event;
 }
 
-/**
- * Initialize an rmw_event with the appropriate data.
- *
- * \param rmw_event [in|out] to initialize
- * \param implementation_identifier to rmw_event
- * \param data to pass to rmw_event
- * \param event_type for the event to handle
- * \return `RMW_RET_OK` if successful, or
- * \return `RMW_RET_INVALID_ARGUMENT` if invalid argument
- */
 rmw_ret_t
 __rmw_init_event(
   rmw_event_t * rmw_event,

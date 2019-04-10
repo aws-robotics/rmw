@@ -184,7 +184,7 @@ rmw_destroy_node(rmw_node_t * node);
 
 /// Manually assert that this node is alive (for RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE)
 /**
- * If the rmw Liveliness policy is set to RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE, the creator of 
+ * If the rmw Liveliness policy is set to RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE, the creator of
  * this node may manually call `assert_liveliness` at some point in time to signal to the rest
  * of the system that this Node is still alive.
  *
@@ -274,6 +274,32 @@ rmw_ret_t
 rmw_publisher_count_matched_subscriptions(
   const rmw_publisher_t * publisher,
   size_t * subscription_count);
+
+/// Retrieve the actual qos settings of the publisher.
+/**
+ * Query the underlying middleware to determine the qos settings
+ * of the publisher.
+ * The actual configuration applied when using RMW_*_SYSTEM_DEFAULT
+ * can only be resolved after the creation of the publisher, and it
+ * depends on the underlying rmw implementation.
+ * If the underlying setting in use can't be represented in ROS terms,
+ * it will be set to RMW_*_UNKNOWN.
+ * The value of avoid_ros_namespace_conventions field is not resolved
+ * with this function. The rcl function rcl_publisher_get_actual_qos
+ * resolves it.
+ *
+ * \param[in] publisher the publisher object to inspect
+ * \param[out] qos the actual qos settings
+ * \return `RMW_RET_OK` if successful, or
+ * \return `RMW_RET_INVALID_ARGUMENT` if either argument is null, or
+ * \return `RMW_RET_ERROR` if an unexpected error occurs.
+ */
+RMW_PUBLIC
+RMW_WARN_UNUSED
+rmw_ret_t
+rmw_publisher_get_actual_qos(
+  const rmw_publisher_t * publisher,
+  rmw_qos_profile_t * qos);
 
 /// Publish an already serialized message.
 /**
