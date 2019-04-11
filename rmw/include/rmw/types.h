@@ -211,6 +211,10 @@ enum RMW_PUBLIC_TYPE rmw_qos_liveliness_policy_t
   RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_TOPIC
 };
 
+#define RMW_QOS_DEADLINE_DEFAULT {0, 0}
+#define RMW_QOS_LIFESPAN_DEFAULT {0, 0}
+#define RMW_QOS_LIVELINESS_LEASE_DURATION_DEFAULT {0, 0}
+
 /// ROS MiddleWare quality of service profile.
 typedef struct RMW_PUBLIC_TYPE rmw_qos_profile_t
 {
