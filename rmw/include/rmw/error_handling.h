@@ -43,6 +43,14 @@ typedef rcutils_error_state_t rmw_error_state_t;
 #define RMW_SET_ERROR_MSG_WITH_FORMAT_STRING(format_string, ...) \
   RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING(format_string, __VA_ARGS__)
 
+#define RMW_CHECK_IMPLEMENTATION(my_identifier, entity_identifier, entity_name, return_value) \
+  do { \
+    if (my_identifier != entity_identifier) { \
+      RMW_SET_ERROR_MSG(#entity_name " is not from this rmw implementation"); \
+      return return_value; \
+    } \
+  } while (0)
+
 #define rmw_error_is_set rcutils_error_is_set
 
 #define rmw_get_error_state rcutils_get_error_state
